@@ -2,4 +2,4 @@
 *.class
 
 #folders to ignore
-.cph/
+**/.cph
