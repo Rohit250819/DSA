@@ -19,6 +19,15 @@ public class B_Cryptography{
         int size;
         Matrix[] tree;
 
+        void init(int n){
+            size = 1;
+            while(size < n) size *= 2;
+            tree = new Matrix[2 * size];
+
+            for(int i = 0; i < 2 * size; i++){
+                tree[i] = new Matrix(1, 0, 0, 1);
+            }
+        }
 
         Matrix combine(Matrix a, Matrix b){
             return new Matrix(
@@ -45,14 +54,6 @@ public class B_Cryptography{
         }
 
         void build(Matrix[] a){
-            size = 1;
-            while(size < a.length) size *= 2;
-            tree = new Matrix[2 * size];
-
-            for(int i = 0; i < 2 * size; i++){
-                tree[i] = new Matrix(1, 0, 0, 1);
-            }
-
             build(a, 0, 0, size);
         }
 
@@ -92,6 +93,7 @@ public class B_Cryptography{
         }
 
         SegTree st = new SegTree();
+        st.init(n);
         st.build(arr);
 
         while(m-- > 0){
