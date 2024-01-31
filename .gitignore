@@ -1,5 +1,5 @@
 #files to ignore
 *.class
 
-#folders to ignore
-**/.cph
+# Ignore all .cph folders
+**/.cph/
