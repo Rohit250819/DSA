@@ -8,7 +8,7 @@ public class C_Bitwise_OR_and_AND{
     int size;
     int[] operations;
     int[] values;
-    int NEUTRAL_ELEMENT = 1;
+    int NEUTRAL_ELEMENT = -1;
 
     int or_op(int a, int b){
       return a | b;
