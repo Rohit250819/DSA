@@ -53,7 +53,9 @@ public class C_Bitwise_OR_and_AND{
       int mid = (lx + rx) / 2;
       int m1 = calc(l, r, 2 * x + 1, lx, mid);
       int m2 = calc(l, r, 2 * x + 2, mid, rx);
-      int res = 
+      int res = and_op(m1, m2);
+      res = or_op(res, operations[x]);
+      return res;
     }
 
     int calc(int l, int r){
