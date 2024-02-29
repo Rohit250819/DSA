@@ -5,25 +5,32 @@ import java.io.InputStreamReader;
 public class C_LR_remainders{
 
   private static void solve(int n, int m, int[] arr, String command){
-    long product = 1;
-    for(int e : arr){
-      product *= (long)e;
-    }
-
-    System.out.print(product % (long)m + " ");
-    int start = 0;
-    int end = n - 1;
+    int l = 0, r = n - 1;
 
     for(int i = 0; i < n - 1; i++){
       char ch = command.charAt(i);
+      if(ch == 'L' ) l++;
+      else if(ch == 'R') r--;
+    }
+
+
+
+    int[] product = new int[n];
+    product[n - 1] = arr[l] % m;
+
+    for(int i = n - 2; i >= 0; i--){
+      char ch = command.charAt(i);
       if(ch == 'L'){
-        product /= arr[start++];
-        System.out.print(product % (long)m + " ");
+        product[i] = (product[i + 1] * arr[--l]) % m;
       }else{
-        product /= arr[end--];
-        System.out.print(product % (long)m + " ");
+        product[i] = (product[i + 1] * arr[++r]) % m;
       }
     }
+
+
+    for(int val : product)
+      System.out.print(val + " ");
+    
     System.out.println();
   }
 

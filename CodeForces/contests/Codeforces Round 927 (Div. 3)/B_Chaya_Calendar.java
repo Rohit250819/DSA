@@ -6,16 +6,18 @@ import java.util.ArrayList;
 public class B_Chaya_Calendar{
 
   private static void solve(int n, int[] arr){
-    ArrayList<Integer> list = new ArrayList<>();
-    list.add(arr[0]);
+    ArrayList<Long> list = new ArrayList<>();
+    list.add((long)arr[0]);
 
     for(int i = 1; i < n; i++){
-      int temp = arr[i];
+      long temp = (long)arr[i];
       if(temp > list.get(list.size() - 1)){
         list.add(temp);
       }else{
-        while(temp <= list.get(list.size() - 1)){
-          temp += arr[i];
+        long lastElement = list.get(list.size() - 1);
+        if(temp <= lastElement){
+          long mul = lastElement/temp;
+          temp = (mul + 1)*temp;
         }
 
         list.add(temp);
