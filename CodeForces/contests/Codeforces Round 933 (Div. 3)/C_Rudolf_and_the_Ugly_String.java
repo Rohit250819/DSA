@@ -1,10 +1,28 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
 
 public class C_Rudolf_and_the_Ugly_String{
+
+  private static void solve(int n, String str){
+    int ans = 0, i = 0;
+
+    while(i < n - 2){
+      if(str.substring(i, i + 3).equals("map") || str.substring(i, i + 3).equals("pie")){
+        ans++;
+        i += 3;
+        continue;
+      }else if(i + 5 < n && str.substring(i, i + 5).equals("mapie")){
+        ans++;
+        i += 5;
+        continue;
+      }
+      i++;
+    }
+
+    System.out.println(ans);
+  }
+
   public static void main(String[] args)throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int testCases = Integer.parseInt(br.readLine());
@@ -12,17 +30,8 @@ public class C_Rudolf_and_the_Ugly_String{
     while(testCases-- > 0){
       int n = Integer.parseInt(br.readLine());
       String str = br.readLine();
-      int ans = 0;
-      Set<Integer> set = new HashSet<>();
-      for(int i = 0; i <= n - 3; i++){
-        if(str.substring(i, i + 3).equals("map") || str.substring(i, i + 3).equals("pie")){
-          set.add(i);
-          set.add(i + 2);
-        }
-          
-      }
-
-      System.out.println(set.size()/2);
+      
+      solve(n, str);
 
     }
     br.close();
