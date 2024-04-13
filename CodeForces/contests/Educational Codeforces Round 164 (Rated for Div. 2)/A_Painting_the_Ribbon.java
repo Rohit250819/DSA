@@ -5,11 +5,16 @@ import java.io.InputStreamReader;
 public class A_Painting_the_Ribbon{
 
   private static void solve(int n, int m, int k){
-    if(m > k) System.out.println("YES");
-    else{
-      if(k + m + 1 < n && m > 1) System.out.println("YES");
-      else System.out.println("NO");
+    if(m == 1){
+      System.out.println("NO");
+      return;
     }
+
+    int x = (n + (m - 1))/m;//ceil value of n / m;
+    x = n - x;
+
+    if(k >= x) System.out.println("NO");
+    else System.out.println("YES");
     
   }
 

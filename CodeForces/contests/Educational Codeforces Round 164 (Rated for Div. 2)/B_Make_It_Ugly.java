@@ -5,14 +5,35 @@ import java.io.InputStreamReader;
 public class B_Make_It_Ugly{
 
   private static void solve(int n, int[] arr){
-    for(int i = 1; i < n - 1; i++){
-      if(arr[i - 1] == arr[i + 1] && arr[i] != arr[i - 1]){
-        System.out.println(i);
-        return;
+    int keyElement = arr[0];
+
+    //i checked from both sides of the array
+
+    int minToRemove = Integer.MAX_VALUE;
+    int interval = 0;
+
+    for(int i = 0; i < n; i++){
+      if(arr[i] == keyElement){
+        interval++;
+      }else{
+        minToRemove = Math.min(interval, minToRemove);
+        interval = 0;
       }
     }
 
-    System.out.println(-1);
+    interval = 0;
+
+    for(int i = n - 1; i >= 0; i--){
+      if(arr[i] == keyElement){
+        interval++;
+      }else{
+        minToRemove = Math.min(interval, minToRemove);
+        interval = 0;
+      }
+    }
+    
+    if(minToRemove == Integer.MAX_VALUE) System.out.println(-1);
+    else System.out.println(minToRemove);
   }
 
   public static void main(String[] args)throws IOException {
