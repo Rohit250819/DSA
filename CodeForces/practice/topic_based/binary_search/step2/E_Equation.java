@@ -29,6 +29,6 @@ public class E_Equation{
 
     solve(C);
 
-    br.close();
+    
   }
 }
